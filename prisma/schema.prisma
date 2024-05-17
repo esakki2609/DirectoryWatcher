@@ -1,0 +1,37 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Configuration {
+  id                 Int         @id @default(autoincrement())
+  directory          String
+  interval           Int
+  magicString        String
+  files_add_count    Int?
+  files_delete_count Int?
+  taskRuns           TaskRun[]
+  filesAdded         FileAdded[]
+}
+
+model TaskRun {
+  id               Int           @id @default(autoincrement())
+  startTime        DateTime
+  endTime          DateTime?
+  runtime          String?
+  magicStringCount Int
+  status           String
+  configurationId  Int
+  configuration    Configuration @relation(fields: [configurationId], references: [id])
+}
+
+model FileAdded {
+  id              Int            @id @default(autoincrement())
+  fileName        String
+  Configuration   Configuration? @relation(fields: [configurationId], references: [id])
+  configurationId Int?
+}
