@@ -39,13 +39,21 @@ The API will be available at http://localhost:3000 by default.
 
 # Endpoints
 GET /dir: Get all Directories.
+
 GET /dir/:id: Get a specific Directory details by ID.
+
 POST /dir: Create a new Directory.
+
 PUT /dir/update: Update an existing Directory.
+
 GET /startTask/:id: Start a task(count the MagicString) based on Directory ID.
+
 GET /stopTask/:id: Stop a running task.
+
 GET /taskDetails/:id: Get details of a task run by Directory ID.
+
 POST /dir/:dirId/createFile: Create and add files to a Directory.
+
 DELETE /dir/:dirId/deleteFile/:id: Delete a file from a Directory.
 
 # Dependencies
