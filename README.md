@@ -45,8 +45,8 @@ PUT /dir/update: Update an existing Directory.
 GET /startTask/:id: Start a task(count the MagicString) based on Directory ID.
 GET /stopTask/:id: Stop a running task.
 GET /taskDetails/:id: Get details of a task run by Directory ID.
-POST /dir/createFiles: Create and add files to a Directory.
-DELETE /dir/:directoryId/deleteFile/:id: Delete a file from a Directory.
+POST /dir/:dirId/createFile: Create and add files to a Directory.
+DELETE /dir/:dirId/deleteFile/:id: Delete a file from a Directory.
 
 # Dependencies
 Express: Web framework for handling HTTP requests.
