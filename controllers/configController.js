@@ -12,12 +12,6 @@ exports.getConfigById = async (req, res) => {
   console.log(id);
   const config = await prisma.configuration.findFirst({
     where: { id: id },
-    select: {
-      directory: true,
-      filesAdded: true,
-      magicString: true,
-      interval: true,
-    },
   });
   console.log("configId", config);
   if (config) res.json(config);

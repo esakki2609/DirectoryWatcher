@@ -34,9 +34,8 @@ exports.startTask = async (req, res) => {
 
       // Schedule the task to run at the specified interval
       const intervalId = setInterval(() => {
-        console.log(`Task scheduled to run every ${interval} seconds`);
-        // Replace this log with the actual task logic
-      }, interval * 1000); // interval is in seconds, convert to milliseconds
+        console.log(`Task scheduled to run every ${interval} seconds`); 
+      }, interval );
 
       // Store the interval ID with the configuration ID as the key
       intervals.set(id, intervalId);
@@ -62,7 +61,6 @@ exports.startTask = async (req, res) => {
               configurationId: id,
             },
           });
-          console.log("endupdateTask", taskDetails);
         });
       } else {
         taskDetails = await prisma.taskRun.create({
@@ -73,7 +71,6 @@ exports.startTask = async (req, res) => {
             configurationId: id,
           },
         });
-        console.log("createTaskRun", taskDetails);
       }
       // Send response with the configuration and magic string count
       res.json({
@@ -129,12 +126,11 @@ exports.stopTask = async (req, res) => {
           data: {
             startTime: new Date(),
             endTime: endTime,
-            runtime: `${hours}h ${minutes}m ${seconds}s`, // Format runtime
+            runtime: `${hours}h ${minutes}m ${seconds}s`, 
             status: "SUCCESS",
             configurationId: id,
           },
         });
-        console.log("updateTask", taskDetails);
       });
     }
 
@@ -149,7 +145,6 @@ exports.stopTask = async (req, res) => {
 
 exports.getTaskDetails = async (req, res) => {
   const id = parseInt(req.params.id);
-  console.log(id);
   const getFiles = await prisma.taskRun.findFirst({
     where: {
       configurationId: id,
