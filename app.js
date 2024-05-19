@@ -1,11 +1,11 @@
-const express = require("express");
-const bodyParser = require("body-parser");
+import express from "express";
+import bodyParser from "body-parser";
 const app = express();
 app.use(bodyParser.json());
 
 // Import routes
-const configRoutes = require("./routes/configRoutes");
-const taskRoutes = require("./routes/taskRoutes");
+import configRoutes from "./routes/configRoutes.js";
+import taskRoutes from "./routes/taskRoutes.js";
 
 // Use routes
 app.use("/dir", configRoutes);

@@ -1,10 +1,10 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-const taskController = require("../controllers/taskController");
+import TaskController from "../controllers/taskController.js";
 
 // Define routes
-router.get("/start/:id", taskController.startTask);
-router.get("/stop/:id", taskController.stopTask);
-router.get("/:id", taskController.getTaskDetails);
+router.get("/start/:id", TaskController.startTask);
+router.get("/stop/:id", TaskController.stopTask);
+router.get("/:id", TaskController.getTaskDetails);
 
-module.exports = router;
+export default router;

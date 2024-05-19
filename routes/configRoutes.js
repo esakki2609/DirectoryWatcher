@@ -1,14 +1,14 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-const configController = require("../controllers/configController");
+import ConfigController from "../controllers/configController.js";
 
 // Define routes
-router.get("/", configController.getAllConfigs);
-router.get("/:id", configController.getConfigById);
-router.post("/", configController.createConfig);
-router.put("/update", configController.updateConfig);
+router.get("/", ConfigController.getAllDirectory);
+router.get("/:id", ConfigController.getDirectory);
+router.post("/", ConfigController.createDirectory);
+router.put("/update", ConfigController.updateDirectory);
 
-router.post("/:configId/createFile", configController.createFile);
-router.delete("/:configId/deleteFile/:id", configController.deleteFile);
+router.post("/:dirId/createFile", ConfigController.createFile);
+router.delete("/:dirId/deleteFile/:id", ConfigController.deleteFile);
 
-module.exports = router;
+export default router;
